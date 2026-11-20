@@ -1,0 +1,8 @@
+# Carpetas de trabajo que LegacyForge crea en un proyecto
+.lf-change-respaldo/
+.lf-borradores/
+.legacyforge/usuario.local.md
+*.lf-bak
+
+node_modules/
+.DS_Store

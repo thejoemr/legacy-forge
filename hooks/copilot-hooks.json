@@ -1,0 +1,10 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      { "type": "command", "command": "node .github/hooks/lf-guard.mjs", "timeout": 10 }
+    ],
+    "PreToolUse": [
+      { "type": "command", "command": "node .github/hooks/lf-guard.mjs", "timeout": 10 }
+    ]
+  }
+}

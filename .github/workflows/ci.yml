@@ -1,0 +1,87 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Coherencia del paquete
+        run: node scripts/check.mjs
+      - name: Pruebas del guard
+        run: node scripts/test-guard.mjs
+      - name: Validar plugins de Claude Code
+        run: |
+          npm install -g @anthropic-ai/claude-code
+          claude plugin validate .
+          claude plugin validate ./plugins/legacyforge-guard
+
+  install-unix:
+    needs: check
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Instalar y desinstalar (usuario y proyecto)
+        shell: bash
+        run: |
+          set -euo pipefail
+          export HOME="$RUNNER_TEMP/home"; mkdir -p "$HOME"
+          repo="$RUNNER_TEMP/repo"; mkdir -p "$repo"
+          ./install.sh --harness all --hooks
+          test -f "$HOME/.claude/skills/lf-core/references/comunicacion.md"
+          test -f "$HOME/.agents/skills/lf-init/agents/openai.yaml"
+          test -f "$HOME/.claude/agents/lf-critico.md"
+          test -f "$HOME/.copilot/agents/lf-critico.agent.md"
+          grep -q lf-guard.mjs "$HOME/.claude/settings.json"
+          ./install.sh --harness claude,copilot --scope project --project "$repo" --hooks
+          test -f "$repo/.claude/hooks/lf-guard.mjs"
+          test -f "$repo/.github/hooks/legacyforge.json"
+          ./install.sh --harness all --uninstall
+          ./install.sh --harness claude,copilot --scope project --project "$repo" --uninstall
+          test ! -e "$HOME/.claude/skills/lf-core"
+          test ! -e "$repo/.claude/settings.json"
+          ! grep -q lf-guard.mjs "$HOME/.claude/settings.json" 2>/dev/null
+
+  install-windows:
+    needs: check
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        shell: [pwsh, powershell]
+    defaults:
+      run:
+        shell: ${{ matrix.shell }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Instalar y desinstalar
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $env:USERPROFILE = Join-Path $env:RUNNER_TEMP 'home'
+          New-Item -ItemType Directory -Force $env:USERPROFILE | Out-Null
+          $repo = Join-Path $env:RUNNER_TEMP 'repo'
+          New-Item -ItemType Directory -Force $repo | Out-Null
+          .\install.ps1 -Harness claude,copilot,codex -Project $repo -Scope project -Hooks
+          if (-not (Test-Path "$repo\.claude\skills\lf-core\SKILL.md")) { throw 'faltan skills de Claude' }
+          if (-not (Test-Path "$repo\.agents\skills\lf-core\SKILL.md")) { throw 'faltan skills de Copilot/Codex' }
+          if (-not (Select-String -Path "$repo\.claude\settings.json" -Pattern 'lf-guard.mjs' -Quiet)) { throw 'faltan los hooks' }
+          if (-not (Test-Path "$repo\.github\hooks\legacyforge.json")) { throw 'falta la protección de Copilot' }
+          .\install.ps1 -Harness all -Project $repo -Scope project -Uninstall
+          if (Test-Path "$repo\.claude\skills\lf-core") { throw 'no se desinstaló' }
+          if (Test-Path "$repo\.claude\settings.json") { throw 'quedó settings.json' }
