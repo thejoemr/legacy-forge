@@ -62,12 +62,12 @@ const ps = read('install.ps1');
 const same = (a, b) => JSON.stringify([...a].sort()) === JSON.stringify([...b].sort());
 const shSkills = listFrom(sh, /SKILLS=\(([^)]*)\)/);
 const shAgents = listFrom(sh, /AGENTS=\(([^)]*)\)/);
-const psSkills = listFrom(ps, /\$Skills = @\(([^)]*)\)/);
-const psAgents = listFrom(ps, /\$Agents = @\(([^)]*)\)/);
+const psSkills = listFrom(ps, /\$LfSkills = @\(([^)]*)\)/);
+const psAgents = listFrom(ps, /\$LfAgents = @\(([^)]*)\)/);
 if (!shSkills || !same(shSkills, skills)) errors.push('install.sh: la lista SKILLS no coincide con skills/');
-if (!psSkills || !same(psSkills, skills)) errors.push('install.ps1: la lista $Skills no coincide con skills/');
+if (!psSkills || !same(psSkills, skills)) errors.push('install.ps1: la lista $LfSkills no coincide con skills/');
 if (!shAgents || !same(shAgents, helperAgents)) errors.push('install.sh: la lista AGENTS no coincide');
-if (!psAgents || !same(psAgents, helperAgents)) errors.push('install.ps1: la lista $Agents no coincide');
+if (!psAgents || !same(psAgents, helperAgents)) errors.push('install.ps1: la lista $LfAgents no coincide');
 if ([...ps].some((c) => c.charCodeAt(0) > 127)) errors.push('install.ps1: debe ser ASCII (PowerShell 5.1 lo lee como ANSI)');
 
 // Manifiestos y versiones.

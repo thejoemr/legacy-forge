@@ -44,10 +44,10 @@ param(
 
 $ErrorActionPreference = 'Stop'
 $Repo = 'thejoemr/legacy-forge'
-$Skills = @('lf-analyze', 'lf-architecture', 'lf-branch', 'lf-change', 'lf-core', 'lf-debate',
+$LfSkills = @('lf-analyze', 'lf-architecture', 'lf-branch', 'lf-change', 'lf-core', 'lf-debate',
   'lf-delegate', 'lf-diagnose', 'lf-explain', 'lf-help', 'lf-init', 'lf-memory', 'lf-optimize',
   'lf-product', 'lf-propose', 'lf-setup', 'lf-team', 'lf-test')
-$Agents = @('lf-explorador', 'lf-critico', 'lf-verificador', 'lf-escenarios')
+$LfAgents = @('lf-explorador', 'lf-critico', 'lf-verificador', 'lf-escenarios')
 $UserHome = [Environment]::GetFolderPath('UserProfile')
 $Tmp = $null
 
@@ -130,19 +130,19 @@ try {
 
   function Install-Skills([string]$Dest) {
     Ensure-Dir $Dest
-    foreach ($s in $Skills) { Copy-Dir (Join-Path $Source "skills/$s") (Join-Path $Dest $s) }
+    foreach ($s in $LfSkills) { Copy-Dir (Join-Path $Source "skills/$s") (Join-Path $Dest $s) }
     Say "  skills    -> $Dest"
   }
 
   function Remove-Skills([string]$Dest) {
-    foreach ($s in $Skills) { Remove-PathIfExists (Join-Path $Dest $s) }
+    foreach ($s in $LfSkills) { Remove-PathIfExists (Join-Path $Dest $s) }
     Remove-IfEmpty $Dest
     Say "  skills    quitadas de $Dest"
   }
 
   function Install-Agents([string]$Dest, [string]$Ext) {
     Ensure-Dir $Dest
-    foreach ($a in $Agents) {
+    foreach ($a in $LfAgents) {
       $from = Join-Path $Source "agents/$a.md"; $to = Join-Path $Dest "$a$Ext"
       Invoke-Step "copiar $from -> $to" { Copy-Item -LiteralPath $from -Destination $to -Force }
     }
@@ -150,7 +150,7 @@ try {
   }
 
   function Remove-Agents([string]$Dest, [string]$Ext) {
-    foreach ($a in $Agents) { Remove-PathIfExists (Join-Path $Dest "$a$Ext") }
+    foreach ($a in $LfAgents) { Remove-PathIfExists (Join-Path $Dest "$a$Ext") }
     Remove-IfEmpty $Dest
     Say "  ayudantes quitados de $Dest"
   }
@@ -214,15 +214,15 @@ try {
 
   function Invoke-Copilot {
     if ($Scope -eq 'user') {
-      $skills = Join-Path $UserHome '.agents/skills'; $agents = Join-Path $UserHome '.copilot/agents'; $ext = '.agent.md'
+      $skillsDir = Join-Path $UserHome '.agents/skills'; $agentsDir = Join-Path $UserHome '.copilot/agents'; $ext = '.agent.md'
     } else {
-      $skills = Join-Path $Project '.agents/skills'; $agents = Join-Path $Project '.claude/agents'; $ext = '.md'
+      $skillsDir = Join-Path $Project '.agents/skills'; $agentsDir = Join-Path $Project '.claude/agents'; $ext = '.md'
     }
     $gh = Join-Path $Project '.github/hooks'
     Say "GitHub Copilot ($Scope):"
     if ($Uninstall) {
-      Remove-Skills $skills
-      Remove-Agents $agents $ext
+      Remove-Skills $skillsDir
+      Remove-Agents $agentsDir $ext
       if (Test-Path (Join-Path $gh 'legacyforge.json')) {
         Remove-PathIfExists (Join-Path $gh 'legacyforge.json')
         Remove-PathIfExists (Join-Path $gh 'lf-guard.mjs')
@@ -231,8 +231,8 @@ try {
       }
       return
     }
-    Install-Skills $skills
-    if (-not $NoAgents) { Install-Agents $agents $ext }
+    Install-Skills $skillsDir
+    if (-not $NoAgents) { Install-Agents $agentsDir $ext }
     if ($Hooks) {
       if ($Scope -eq 'user') {
         Warn 'en Copilot la proteccion se instala por repositorio: repite con -Scope project -Project <repo> -Hooks'
@@ -249,10 +249,10 @@ try {
   }
 
   function Invoke-Codex {
-    $skills = if ($Scope -eq 'user') { Join-Path $UserHome '.agents/skills' } else { Join-Path $Project '.agents/skills' }
+    $skillsDir = if ($Scope -eq 'user') { Join-Path $UserHome '.agents/skills' } else { Join-Path $Project '.agents/skills' }
     Say "Codex ($Scope):"
-    if ($Uninstall) { Remove-Skills $skills; return }
-    if ($WantCopilot) { Say "  skills    -> $skills (compartidas con Copilot)" } else { Install-Skills $skills }
+    if ($Uninstall) { Remove-Skills $skillsDir; return }
+    if ($WantCopilot) { Say "  skills    -> $skillsDir (compartidas con Copilot)" } else { Install-Skills $skillsDir }
     if ($Hooks) { Warn 'Codex no tiene hooks: la regla de APPLY la aplican las skills' }
     if (-not $NoAgents) { Say '  ayudantes: Codex no usa subagentes; el copiloto hace esas revisiones en pasadas' }
   }
