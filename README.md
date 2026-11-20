@@ -235,8 +235,8 @@ Para publicar una versión: actualiza `VERSION`, la versión en
 segunda línea de `skills/lf-init/assets/plantilla-AGENTS.md`; agrega la
 sección en `CHANGELOG.md`; corre `node scripts/check.mjs` y crea la
 etiqueta `vX.Y.Z`. Si cambias `hooks/lf-guard.mjs`, cópialo también a
-`plugins/legacyforge-guard/hooks/`. La CI comprueba todo esto en cada
-push.
+`plugins/legacyforge-guard/hooks/`. `node scripts/check.mjs` avisa si
+algo de esto no cuadra.
 
 Antes de cambiar una skill, lee la sección "Probar el paquete" de la
 [guía](docs/GUIA.md): los escenarios de `pruebas/` con el agente

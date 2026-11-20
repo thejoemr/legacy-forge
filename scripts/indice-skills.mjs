@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Regenera pruebas/indice-skills.md a partir de los encabezados de las
-// skills. Con --check solo comprueba que está al día (para CI).
+// skills. Con --check solo comprueba que está al día.
 import fs from 'node:fs';
 import path from 'node:path';
 import { ROOT, buildIndex, version } from './lib.mjs';

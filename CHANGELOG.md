@@ -27,8 +27,6 @@ Nuevo:
 - `scripts/indice-skills.mjs`: regenera `pruebas/indice-skills.md`.
 - `scripts/hooks-config.mjs`: agrega o quita los hooks del guard en un
   `settings.json` sin tocar lo demás.
-- CI en GitHub Actions: `check`, pruebas del guard y una instalación de
-  prueba en Linux y Windows.
 
 Cambiado:
 
