@@ -1,8 +1,5 @@
-# Carpetas de trabajo que LegacyForge crea en un proyecto
-.lf-change-respaldo/
-.lf-borradores/
-.legacyforge/usuario.local.md
-*.lf-bak
+# Carpeta de memoria y expediente que LegacyForge crea en un proyecto
+.legacyforge/
 
 node_modules/
 .DS_Store

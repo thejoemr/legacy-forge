@@ -1,0 +1,18 @@
+{
+  "name": "legacyforge",
+  "version": "1.0.0",
+  "description": "Asistente para mantener software heredado: agentes de solo lectura, skills y hooks para Claude Code, GitHub Copilot y Codex.",
+  "type": "module",
+  "bin": {
+    "legacyforge": "scripts/instalar.mjs"
+  },
+  "files": ["VERSION", "skills", "agents", "agents-copilot", "hooks", "scripts"],
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "test": "node hooks/test/lf-hooks.test.mjs && node scripts/verificar.mjs",
+    "agentes": "node scripts/agentes.mjs"
+  },
+  "repository": "github:thejoemr/legacy-forge",
+  "license": "UNLICENSED",
+  "private": true
+}

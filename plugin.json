@@ -1,13 +1,21 @@
 {
   "name": "legacyforge",
-  "description": "Copiloto para mantener sistemas heredados: entiende el negocio, diagnostica, propone el cambio que encaja y no edita nada sin APPLY.",
-  "version": "0.4.2",
+  "description": "Asistente para mantener software heredado: agentes de solo lectura investigan, el asistente recomienda y el humano decide. Nada cambia sin APPLY.",
+  "version": "1.0.0",
   "author": {
     "name": "thejoemr",
     "url": "https://github.com/thejoemr"
   },
   "homepage": "https://github.com/thejoemr/legacy-forge",
   "repository": "https://github.com/thejoemr/legacy-forge",
-  "keywords": ["legacy", "maintenance", "skills", "mantenimiento", "sistemas-heredados"],
-  "skills": ["skills/"]
+  "keywords": [
+    "legacy",
+    "maintenance",
+    "skills",
+    "mantenimiento",
+    "sistemas-heredados"
+  ],
+  "skills": [
+    "skills/"
+  ]
 }
