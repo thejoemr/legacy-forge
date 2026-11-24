@@ -166,9 +166,9 @@ Forma:
   comando de git y una consulta), hasta 3 pasos de obtención. Nunca en
   un mismo mensaje encargos de distinta prioridad, ni para personas
   distintas (una consulta para el desarrollador, una pregunta para el
-  negocio, una decisión para su jefe). Excepción: un
-  encargo que tarda días en volver y no depende de lo actual puede ir
-  junto, diciendo en la misma frase por qué se adelanta.
+  negocio, una decisión para su jefe). Excepción: un encargo que tarda
+  días en volver y no depende de lo actual puede ir junto, diciendo en
+  la misma frase por qué se adelanta.
 - R12. Cada dato específico del sistema sale de evidencia. Si lo deduces
   del código pero nadie lo confirmó, márcalo "según el código" y di qué
   hacer si no coincide.
