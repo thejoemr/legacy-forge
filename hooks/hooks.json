@@ -1,0 +1,23 @@
+{
+  "description": "LegacyForge: APPLY, agentes de solo lectura, secretos, git, producción, respaldo, formato, salidas, informes, inicio y cierre. Solo actúa en proyectos preparados con /lf-iniciar.",
+  "hooks": {
+    "SessionStart": [
+      { "hooks": [ { "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/lf-hooks.mjs\" --solo-preparados" } ] }
+    ],
+    "UserPromptSubmit": [
+      { "hooks": [ { "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/lf-hooks.mjs\" --solo-preparados" } ] }
+    ],
+    "PreToolUse": [
+      { "matcher": "*", "hooks": [ { "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/lf-hooks.mjs\" --solo-preparados" } ] }
+    ],
+    "PostToolUse": [
+      { "matcher": "Edit|Write|MultiEdit|NotebookEdit|Bash|PowerShell|Read", "hooks": [ { "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/lf-hooks.mjs\" --solo-preparados" } ] }
+    ],
+    "SubagentStop": [
+      { "hooks": [ { "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/lf-hooks.mjs\" --solo-preparados" } ] }
+    ],
+    "Stop": [
+      { "hooks": [ { "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/lf-hooks.mjs\" --solo-preparados" } ] }
+    ]
+  }
+}

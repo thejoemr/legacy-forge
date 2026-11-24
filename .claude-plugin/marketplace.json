@@ -5,19 +5,14 @@
     "url": "https://github.com/thejoemr"
   },
   "metadata": {
-    "description": "LegacyForge: copiloto para mantener sistemas heredados.",
-    "version": "0.4.2"
+    "description": "LegacyForge: asistente para mantener sistemas heredados.",
+    "version": "1.0.0"
   },
   "plugins": [
     {
       "name": "legacyforge",
       "source": "./",
-      "description": "Las 18 skills de LegacyForge y sus cuatro ayudantes de solo lectura."
-    },
-    {
-      "name": "legacyforge-guard",
-      "source": "./plugins/legacyforge-guard",
-      "description": "Protección de cambios (Claude Code): bloquea ediciones sin APPLY, lectura de secretos y git destructivo. Requiere Node.js 18+."
+      "description": "El asistente LegacyForge: 45 skills, 13 agentes de solo lectura y 11 hooks. Los hooks requieren Node.js 18+."
     }
   ]
 }

@@ -1,5 +1,65 @@
 # Registro de cambios de LegacyForge
 
+## 1.0.0 · 2026-11-24 · Asistente, agentes y skills, en limpio
+
+Reescritura desde cero. LegacyForge pasa de un conjunto de skills por
+fase a un asistente que plantea y un humano que decide: agentes de solo
+lectura investigan, simulan, evalúan y redactan; el asistente integra,
+recomienda y es el único que escribe, siempre con APPLY.
+
+Nuevo:
+
+- `skills/lf-asistente`: el núcleo. Quién decide qué (D0 a D3), cómo se
+  entrega, lo que no se negocia, los flujos, el proyecto de trabajo, los
+  almacenes (`.legacyforge/`: memoria, expediente, respaldo) y 9
+  plantillas (encargo, informe, decisión, registro, entornos, DESC,
+  postmortem, runbook, documentos).
+- 40 skills de trabajo, una por habilidad del rol, en español.
+- 4 puntos de entrada: `/lf-ayuda`, `/lf-iniciar`, `/lf-revisar`,
+  `/lf-cerrar`.
+- 13 agentes de solo lectura, una instancia por unidad de trabajo, con
+  skills precargadas e informe de cinco secciones. `agents/` (Claude
+  Code) y `agents-copilot/` (Copilot) salen de `scripts/agentes.mjs`.
+- `hooks/lf-hooks.mjs`: 11 hooks en un script. APPLY también para
+  escrituras por terminal; agentes que nunca escriben; producción
+  bloqueada; respaldo automático; aviso de cambio de codificación;
+  salidas largas al expediente; informe de agente completo; contexto al
+  iniciar; recordatorio al cerrar. A nivel de usuario y en el plugin
+  solo actúan en proyectos preparados (`--solo-preparados`). 131
+  pruebas.
+- Instalador en Node (`scripts/instalar.mjs`), también con
+  `npx github:thejoemr/legacy-forge`. `install.sh` e `install.ps1`
+  descargan el repositorio y lo ejecutan. Quita lo que dejó la 0.4.
+- `scripts/verificar.mjs`: nombres, totales, referencias, "Usada por",
+  versiones y presupuesto de descripciones.
+
+Cambiado:
+
+- Los hooks se instalan por defecto (`--no-hooks` para omitirlos); antes
+  eran opcionales con `--hooks`.
+- El plugin `legacyforge` trae skills, agentes y hooks. El plugin
+  `legacyforge-guard` desaparece: desinstálalo si lo tenías.
+- SETUP, ARCHITECTURE, PRODUCT y AGENTS.md piden APPLY; solo
+  `.legacyforge/` queda exenta.
+
+Rescatado de 0.4: reglas de comunicación, criterios de solución, tipos de
+pedido al humano, simulación, codificación heredada, ramas, escalera de
+diagnóstico, prioridades de prueba, plantillas de documentos, la lista
+del crítico, los pasos del verificador, la "mejor versión" y el "¿estás
+seguro?" del debate, y las reglas del guard.
+
+Retirado: las 17 skills de 0.4 que no siguen (`lf-core`, `lf-team`,
+`lf-delegate`, `lf-analyze`, `lf-diagnose`, `lf-change`, `lf-test`,
+`lf-explain`, `lf-optimize`, `lf-propose`, `lf-memory`, `lf-branch`,
+`lf-setup`, `lf-architecture`, `lf-product`, `lf-init`, `lf-help`), los
+agentes `lf-explorador`, `lf-simulador` y `lf-escenarios`,
+`hooks/lf-guard.mjs`, `plugins/legacyforge-guard/`, `docs/GUIA.md` (lo
+reemplaza el README) y los scripts de 0.4. Los escenarios de prueba de
+0.4 pasan a `docs/historial/pruebas-0.4/`.
+
+Sin probar en un asistente real. Siguiente paso: escenarios nuevos para
+1.0 y una prueba en un proyecto.
+
 ## 0.4.2 · 2026-11-24 · Contexto, precedentes, orden y brevedad
 
 Base: feedback de una sesión real con 0.4.1. Las explicaciones convencen;

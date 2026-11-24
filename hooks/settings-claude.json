@@ -1,25 +1,22 @@
 {
   "hooks": {
+    "SessionStart": [
+      { "hooks": [ { "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/lf-hooks.mjs\"" } ] }
+    ],
     "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/lf-guard.mjs\""
-          }
-        ]
-      }
+      { "hooks": [ { "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/lf-hooks.mjs\"" } ] }
     ],
     "PreToolUse": [
-      {
-        "matcher": "Edit|Write|MultiEdit|NotebookEdit|Read|Bash|PowerShell",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/lf-guard.mjs\""
-          }
-        ]
-      }
+      { "matcher": "*", "hooks": [ { "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/lf-hooks.mjs\"" } ] }
+    ],
+    "PostToolUse": [
+      { "matcher": "Edit|Write|MultiEdit|NotebookEdit|Bash|PowerShell|Read", "hooks": [ { "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/lf-hooks.mjs\"" } ] }
+    ],
+    "SubagentStop": [
+      { "hooks": [ { "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/lf-hooks.mjs\"" } ] }
+    ],
+    "Stop": [
+      { "hooks": [ { "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/lf-hooks.mjs\"" } ] }
     ]
   }
 }

@@ -1,19 +1,35 @@
 {
   "name": "legacyforge",
   "displayName": "LegacyForge",
-  "version": "0.4.2",
-  "description": "Copiloto para mantener sistemas heredados: entiende el negocio, diagnostica, propone el cambio que encaja y no edita nada sin APPLY.",
+  "version": "1.0.0",
+  "description": "Asistente para mantener software heredado: agentes de solo lectura investigan, el asistente recomienda y el humano decide. Nada cambia sin APPLY.",
   "author": {
     "name": "thejoemr",
     "url": "https://github.com/thejoemr"
   },
   "homepage": "https://github.com/thejoemr/legacy-forge",
   "repository": "https://github.com/thejoemr/legacy-forge",
-  "keywords": ["legacy", "maintenance", "copilot", "skills", "mantenimiento", "sistemas-heredados"],
+  "keywords": [
+    "legacy",
+    "maintenance",
+    "agents",
+    "skills",
+    "mantenimiento",
+    "sistemas-heredados"
+  ],
   "agents": [
-    "./agents/lf-explorador.md",
+    "./agents/lf-analista-dependencias.md",
+    "./agents/lf-analista-impacto.md",
+    "./agents/lf-conciliador.md",
     "./agents/lf-critico.md",
-    "./agents/lf-verificador.md",
-    "./agents/lf-escenarios.md"
+    "./agents/lf-disenador-pruebas.md",
+    "./agents/lf-documentador.md",
+    "./agents/lf-evaluador-alternativa.md",
+    "./agents/lf-historiador.md",
+    "./agents/lf-investigador.md",
+    "./agents/lf-lector-evidencia.md",
+    "./agents/lf-redactor.md",
+    "./agents/lf-simulador-caso.md",
+    "./agents/lf-verificador.md"
   ]
 }
