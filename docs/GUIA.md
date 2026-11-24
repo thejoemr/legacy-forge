@@ -1,6 +1,6 @@
 # LegacyForge · guía de uso
 
-Versión 0.4.1 · ver `CHANGELOG.md`
+Versión 0.4.2 · ver `CHANGELOG.md`
 
 Un copiloto para el desarrollador que mantiene un sistema existente. Le
 ahorra lo técnico y le enseña el negocio mientras trabaja, para que
@@ -130,10 +130,16 @@ lo de la factura"). No hay pasos que seguir: puedes saltar, volver o
 cambiar de idea, y él se ubica.
 
 - Entiende qué quieres lograr, no solo lo que pediste literalmente.
+- Usa todo lo que le contaste desde el inicio. Lo que dijiste de pasada
+  (el horario de un job, cuántos servidores hay) lo cruza con lo que lee
+  y saca conclusiones sin volver a preguntarte.
 - Antes de proponer, entiende el punto que vas a tocar: para qué existe
   en el negocio, quién lo usa, qué decide su camino, dónde más vive la
   misma regla y por qué está así, según el código, los commits y los
   comentarios.
+- Antes de diseñar, busca cómo resolvió el sistema algo parecido: otra
+  pantalla que ya exporta, la utilidad que ya arma esa consulta. Lo
+  reutiliza o sigue su forma, y te dice en qué se apoya.
 - Recorre el código en la cabeza con valores concretos, como una prueba
   de escritorio. Empieza por un caso y, a medida que la conversación
   trae detalles ("solo a veces", "en mi máquina no pasa", "en prod hay
@@ -155,7 +161,11 @@ cambiar de idea, y él se ubica.
   métodos ni líneas, salvo que los pidas. Al proponer la solución sí da
   el detalle técnico justo para evaluarla.
 - Cuando no puede hacer algo (no tiene terminal, base o navegador), te lo
-  pide con instrucciones listas para copiar y pegar, sin huecos.
+  pide con instrucciones listas para copiar y pegar, sin huecos. Te pide
+  una cosa a la vez, la más importante, y con su resultado decide lo
+  siguiente.
+- Si a mitad abres otro tema o le discutes para qué quiere un dato, lo
+  atiende y luego vuelve al punto en que iban.
 - Lo que solo sabe el negocio o infraestructura te lo deja como pregunta
   para el área que corresponde, lista para pegar.
 - Te dice qué tan seguro está y qué lo confirmaría.
@@ -199,9 +209,10 @@ los reconozcas de un vistazo:
 | `► Tu turno` | Necesita que hagas algo por él | Copia, pega, ejecuta y devuélvele lo que pide |
 | `▲ Atención` | Un riesgo que interrumpe lo que se hacía | Tenlo en cuenta |
 
-Los mensajes son cortos a propósito: lo que decide va primero y el resto
-te lo ofrece en una línea. Si quieres más, pídelo ("dame el detalle
-técnico", "¿en qué archivo?", "¿qué otros escenarios viste?").
+Los mensajes son cortos a propósito: lo que decide va primero, una
+respuesta cabe en unas tres líneas y una propuesta en unas ocho. Si
+quieres más, pídelo ("dame el detalle técnico", "¿en qué archivo?",
+"¿qué otros escenarios viste?").
 
 ## Documentos que genera
 

@@ -1,7 +1,7 @@
 {
   "name": "legacyforge",
   "displayName": "LegacyForge",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Copiloto para mantener sistemas heredados: entiende el negocio, diagnostica, propone el cambio que encaja y no edita nada sin APPLY.",
   "author": {
     "name": "thejoemr",

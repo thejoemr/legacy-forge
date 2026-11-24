@@ -83,11 +83,13 @@ nombres, comentarios y código, y lo que queda por saber.
 Después, solo si aporta algo que no se puede decir sin términos técnicos
 o si lo pidieron, un párrafo técnico con la evidencia (ruta y línea).
 
-Extensión según el alcance: FRAGMENTO, hasta 5 frases por párrafo;
-MODULO, hasta 8; SISTEMA, hasta 12.
+Extensión según el alcance: FRAGMENTO, hasta 3 frases; MODULO, hasta
+6; SISTEMA, hasta 10. Primero lo que responde la pregunta; lo demás se
+ofrece en una línea, si cabe en la línea extra del mensaje
+(`comunicacion.md`, Breve y preciso).
 
 Una pregunta de seguimiento sobre un aspecto ("¿y quién la usa?", "¿y si
-falla?") se responde solo en ese aspecto, en 1 a 4 frases.
+falla?") se responde solo en ese aspecto, en 1 a 3 frases.
 
 Lo confirmado que costó averiguar (qué sostiene un parche, qué significa
 un término) va a la memoria (lf-memory).

@@ -1,5 +1,79 @@
 # Registro de cambios de LegacyForge
 
+## 0.4.2 · 2026-11-24 · Contexto, precedentes, orden y brevedad
+
+Base: feedback de una sesión real con 0.4.1. Las explicaciones convencen;
+fallaban cinco cosas: no aprovechaba lo que ya sabía, no buscaba cómo
+resolvió el sistema algo parecido, soltaba varios encargos de distinta
+prioridad en un mensaje, no volvía al tema tras un debate y los mensajes
+seguían largos.
+
+Nuevo:
+
+- `lf-core`, "Exprimir lo que ya sabes": antes de buscar, preguntar,
+  delegar o simular, cruza lo dicho en toda la conversación con lo leído
+  y usa lo que se deduce, marcado como deducido.
+- `lf-core`, "Paso a paso": lo que falta se pide en orden de prioridad,
+  de a uno, esperando el resultado. Se juntan solo encargos de la misma
+  prioridad que no dependen entre sí, diciendo por qué.
+- `lf-core`, "Volver al hilo": al cerrar un desvío (debate, "¿para qué lo
+  quieres?", pregunta lateral) se retoma en el mismo mensaje el punto
+  que quedó abierto.
+- El mapa interno lleva el hilo y la lista de pendientes por prioridad.
+- `punto-focal.md`, "Precedentes": octava pregunta del mapa. Qué buscar
+  (pantallas hermanas, utilidades compartidas, integraciones y commits
+  parecidos), cómo (por la forma del problema) y qué hacer: reutilizar,
+  adaptar o tomar la forma de la casa. Con varios patrones, el del mismo
+  módulo, el más repetido o el más reciente.
+- `comunicacion.md`: topes más bajos (respuesta 1 a 3 líneas,
+  diagnóstico 2 frases, propuesta 8 líneas), una sola línea extra por
+  mensaje, el recorte "¿cabe en la mitad?" y un ejemplo de antes y
+  después. Secciones "Un pedido a la vez" y "Volver al hilo".
+- `pruebas/escenarios-copiloto.md`: E31 (contexto dado al inicio que se
+  deduce después), E32 (exportación que ya existe en otra pantalla), E33
+  (tres pendientes de prioridad distinta) y E34 (debate a mitad de una
+  delegación).
+
+Cambiado:
+
+- `solucion.md`: "Primero, lo que ya existe" (reutilizar, adaptar un
+  precedente, escribir nuevo) y la propuesta dice en qué se apoya.
+  Ejemplo de reporte más corto.
+- `lf-delegate`: R11 pasa a una tarea a la vez y prohíbe mezclar
+  prioridades o personas; T1 revisa lo dicho y lo deducible antes de
+  delegar; T4 responde el "¿para qué?" en una o dos frases y vuelve a
+  pedir; un cambio de rumbo ya no olvida la tarea: se recuerda al cerrar
+  lo nuevo (también en R20).
+- `lf-diagnose`: paso 0 (lo ya dicho en la conversación) y paso 6 (un
+  flujo parecido que sí funciona, para comparar); causa en 2 frases y un
+  solo siguiente paso, sin juntar alcance, negocio y decisiones.
+- `lf-analyze`: R11 con precedentes; propuesta de hasta 8 líneas con una
+  sola pregunta; ejemplo reescrito; tras una pregunta, vuelve al hilo.
+- `lf-change`: el planteamiento dice en qué precedente se apoya y cabe
+  en unas 8 líneas.
+- `lf-debate`: el "¿para qué quieres eso?" no abre un debate; al cerrar
+  un debate se retoma el hilo; respuestas en 2 frases; ejemplo corto.
+- `lf-explain`: extensiones más bajas.
+- `simulacion.md`: al desarrollador, lo más probable y un solo
+  siguiente paso.
+- `lf-team` y `agents/lf-explorador.md`: el explorador también busca
+  precedentes.
+- `agents/lf-simulador.md`: criterio 8 cuenta líneas contra los topes;
+  criterios nuevos 17 (contexto acumulado), 18 (precedentes) y 19 (orden
+  y foco).
+- `skills/lf-init/assets/plantilla-AGENTS.md`: versión 0.4.2; contexto,
+  precedentes, topes, línea extra, un pedido a la vez y volver al hilo.
+  Sigue en 120 líneas.
+- `docs/GUIA.md`: cómo trabaja el copiloto con lo nuevo.
+
+Sin cambios: descripciones de las skills, `hooks/`, instaladores.
+
+Para actualizar un proyecto: vuelve a correr el instalador y después
+`/lf-init` (o reemplaza a mano el bloque de `AGENTS.md`).
+
+Sin probar: ni en un asistente real ni con el simulador. Siguiente paso:
+E31 a E34 y una muestra de E19 a E30 para medir la extensión.
+
 ## 0.4.1 · 2026-11-20 · Distribución en GitHub
 
 El paquete se versiona en `thejoemr/legacy-forge` y se instala con un

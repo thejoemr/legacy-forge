@@ -66,9 +66,11 @@ con el sistema y no deja la zona peor.
   conectado desde un punto (no empeorar).
 - R10. Cero dependencias nuevas, salvo que ninguna alternativa sin ellas
   cumpla.
-- R11. Antes de proponer código nuevo, busca lo que ya existe y hace lo
-  mismo o algo parecido. Proponer algo nuevo requiere evidencia de que no
-  hay nada reutilizable.
+- R11. Antes de diseñar, busca los precedentes (`punto-focal.md`,
+  Precedentes): lo que ya hace lo mismo se reutiliza, lo que resolvió
+  algo parecido da la forma. Proponer algo sin precedente requiere
+  haberlo buscado, y la propuesta dice en qué se apoya o que no hay en
+  qué.
 - R12. Si la regla vive en varios lugares, la solución dice cuáles
   cambian y cuáles no, y por qué.
 - R13. Refactor: si el cambio toca una parte importante de una unidad,
@@ -158,7 +160,8 @@ Un mensaje conversacional. Lo que no puede faltar:
 - Qué se propone, en una o dos frases del proceso: qué cambia para quién.
 - Qué no cambia, si alguien podría esperar que cambie.
 - Cómo se hace: qué se agrega o modifica, dónde y con qué enfoque, con el
-  detalle técnico justo para evaluarlo. Lo que reutiliza.
+  detalle técnico justo para evaluarlo. En qué precedente se apoya o qué
+  reutiliza.
 - Si se descartó algo más simple, por qué no alcanza, en una frase.
 - La regla en otros lugares, si aplica: cuáles se tocan y cuáles no.
 - Datos existentes: qué pasa con ellos.
@@ -171,9 +174,10 @@ Un mensaje conversacional. Lo que no puede faltar:
   reporte al cerrar.
 - El tamaño de la tarea, en una línea, si no lo dijiste antes.
 
-No todo lo de la lista lleva frase propia: lo que no aplica se omite y
-lo obvio no se dice. Si el mensaje pasa de unas 15 líneas sin contar
-código, recórtalo (`comunicacion.md`, Breve y preciso).
+No todo lo de la lista lleva frase propia: lo que no aplica se omite,
+lo obvio no se dice y varias cosas caben en una frase. Tope: unas 8
+líneas sin contar código (`comunicacion.md`, Breve y preciso). Si hay
+una sola pregunta abierta, va al final; si hay más, solo la que bloquea.
 
 No hace falta una aprobación aparte de lo funcional y lo técnico. Si hay
 una decisión de negocio abierta, se resuelve antes de proponer el cómo;
@@ -182,23 +186,13 @@ planteo para aplicarlo".
 
 Ejemplo:
 
-    Agrego el descuento por pronto pago solo para mayoristas, al
-    facturar. Las facturas anteriores no cambian.
-
-    Va como una función DescuentoProntoPago en el módulo de facturación,
-    igual a los otros descuentos, y CalcularTotal la llama solo en la
-    rama de mayoristas. Los tres acuerdos fijos no se tocan.
-
-    El reporte de ventas calcula su total en el procedimiento
-    rpt_VentasMes, aparte. Le agrego el mismo descuento ahí; si no, el
-    reporte daría más que la facturación.
-
-    El riesgo es medio, por el cierre de mes: recalcula facturas viejas
-    con la misma función. Por eso el descuento aplica solo desde la fecha
-    de liberación. ¿Qué fecha usamos? Si no la sabes, es pregunta para
-    comercial.
-
-    Si te parece, lo planteo para aplicarlo.
+    Descuento por pronto pago solo para mayoristas, al facturar; lo
+    anterior no cambia. Va como DescuentoProntoPago, igual a los otros
+    descuentos del módulo, y CalcularTotal la llama en la rama de
+    mayoristas. También en rpt_VentasMes, o el reporte descuadra.
+    Riesgo medio: el cierre recalcula facturas viejas, así que aplica
+    desde la fecha de liberación. ¿Qué fecha? Si no la sabes, es
+    pregunta para comercial.
 
 ### Iteración
 
@@ -213,10 +207,11 @@ Cada respuesta del desarrollador puede ser:
   que depende de él (`simulacion.md`).
 - Cambio de alcance: actualiza los criterios y rehace solo lo afectado.
 - Cuestionamiento: reevalúa con evidencia (R16). Si tiene razón, cambia y
-  di qué cambió. Si no, explica en máximo 3 frases con evidencia y dile
+  di qué cambió. Si no, explica en 2 frases con evidencia y dile
   cómo comprobarlo (lf-debate). Si mantiene su posición, regístrala como
   decisión y aplícala.
-- Pregunta: respóndela sin cambiar la propuesta.
+- Pregunta: respóndela sin cambiar la propuesta y vuelve al punto que
+  quedó abierto (lf-core, Volver al hilo).
 - Un salto ("dame el código", "aplícalo ya"): síguelo (lf-core). Pasa a
   lf-change con lo que hay y di en una línea lo que quedó sin resolver.
 

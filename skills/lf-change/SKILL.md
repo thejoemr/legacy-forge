@@ -185,11 +185,11 @@ Un solo mensaje:
 
     ■ Cambio propuesto · <tema> · riesgo <bajo, medio o alto>
 
-    <Qué cambia en el proceso, para quién, en 1 o 2 frases.>
+    <Qué cambia en el proceso, para quién, en una frase.>
 
     <Cómo: qué se agrega o modifica, en qué archivo o archivos, con qué
-    enfoque y por qué así. Lo que no se toca, si alguien podría esperar
-    que se toque.>
+    enfoque y en qué precedente se apoya. Lo que no se toca, si alguien
+    podría esperar que se toque.>
 
     <El riesgo y cómo se cubre, si es medio o alto. Lo que hay que hacer
     antes, lo que ya existía y afecta, lo que depende del entorno.>
@@ -233,6 +233,12 @@ Lo que no puede faltar:
   prueba.
 - Si el cambio podría estar fuera del alcance del requerimiento, antes
   aplica el control de alcance de lf-branch (B2).
+
+El texto, sin contar el encabezado, la lista de archivos ni los
+comandos, cabe en unas 8 líneas: cada punto de la lista anterior que
+aplica es media frase, no un párrafo (`comunicacion.md`, Breve y
+preciso). Si hay que preguntar algo antes de aplicar, una sola
+pregunta, la que bloquea.
 
 BLOQUEADO: el mensaje empieza con "▲ Atención · cambio bloqueado", dice
 por qué y qué se necesita para desbloquearlo. No pidas el token.

@@ -96,7 +96,7 @@ Automática, antes de presentar una propuesta, cuando lf-core la pide.
    3. Si la tiene: dilo, cambia y di qué cambió.
    4. Si no: en qué coinciden, cuál es el dato decisivo y la forma más
       barata de comprobarlo (leer código, una consulta, una prueba con
-      lf-delegate, lista para pegar). Máximo 3 frases, con evidencia.
+      lf-delegate, lista para pegar). Máximo 2 frases, con evidencia.
 4. Si prefiere no comprobar y seguir su camino, síguelo. Tiene que
    decirlo; repetir su postura no basta. Tras dos rondas, pregunta:
    comprobar o seguir con su opción asumiendo el riesgo. Deja en una
@@ -105,19 +105,19 @@ Automática, antes de presentar una propuesta, cuando lf-core la pide.
    corrección de criterio ("aquí preferimos..."), va también al criterio
    del desarrollador (lf-memory).
 
+"¿Para qué quieres eso?" sobre un dato que pediste no es un desacuerdo
+de fondo: contesta en una o dos frases qué decide ese dato y vuelve a
+pedirlo, o retíralo si su objeción lo vuelve innecesario. No abras un
+debate por eso.
+
 "¿Estás seguro?" no es una orden de cambiar: es un pedido de revisar.
 Revisa de verdad y responde con tu confianza y lo que la subiría.
 
 Ejemplo, cuando mantienes la posición:
 
-    Entiendo: si el descuento se calcula en el reporte, la factura
-    podría quedar como está. En lo que coincidimos es que los dos tienen
-    que cuadrar.
-
-    Lo que decide esto es si el cierre usa el cálculo de la factura o el
-    del reporte. El cierre llama al de la factura (lo vi en el proceso
-    nocturno). Si me equivoco, una consulta del total de octubre en los
-    dos lo muestra en un minuto; te la paso si quieres.
+    Coincido en que los dos tienen que cuadrar; lo que decide es cuál
+    usa el cierre, y el proceso nocturno llama al de la factura. Si me
+    equivoco, el total de octubre en los dos lo muestra en un minuto.
 
 ### M3. Debate a pedido
 
@@ -143,3 +143,7 @@ opciones al final, la recomendada primero.
   que la reabriría.
 - Una decisión registrada no se reabre salvo que él la reabra o aparezca
   evidencia que la contradiga.
+- El debate casi siempre fue un desvío. En el mismo mensaje en que se
+  cierra, retoma en una línea el punto que había quedado abierto antes
+  de él (lo que estaban resolviendo, el dato que habías pedido), ya
+  ajustado a lo que se decidió (lf-core, Volver al hilo).

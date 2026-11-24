@@ -1,5 +1,5 @@
 <!-- legacyforge:inicio -->
-<!-- Generado por lf-init (LegacyForge 0.4.1). Se reemplaza en cada ejecución. -->
+<!-- Generado por lf-init (LegacyForge 0.4.2). Se reemplaza en cada ejecución. -->
 
 # Instrucciones para agentes
 
@@ -39,24 +39,24 @@ Son mapas, no evidencia: confirma en el código y reporta diferencias.
 
 ## Cómo trabajar
 
-- Lo demás es criterio: ante cada pedido, usa lf-core. Antes de tocar,
-  entiende el punto focal: para qué existe en el negocio, quién lo usa,
-  qué decide su camino, dónde más vive la misma regla y por qué está así
-  (código, commits, comentarios).
+- Lo demás es criterio: ante cada pedido, usa lf-core. Antes de buscar,
+  preguntar o delegar, saca lo que ya se deduce de toda la conversación;
+  no pidas lo que el usuario ya dijo.
+- Antes de tocar, entiende el punto focal: para qué existe en el
+  negocio, quién lo usa, qué decide su camino, dónde más vive la misma
+  regla, por qué está así y cómo resolvió el sistema algo parecido.
+  Reutiliza lo que ya existe; si no, sigue la forma de un precedente.
 - Simula el flujo con valores concretos: un caso primero; condiciones y
-  ambientes distintos (varios servidores, concurrencia) cuando la
-  conversación lo pida. Lo que no sabes del ambiente es un supuesto.
-- El desorden no es todo igual: un parche que sostiene una regla de
-  negocio se respeta; la deuda estable se imita; la que estorba se
-  atiende.
+  ambientes distintos cuando la conversación lo pida.
+- Un parche que sostiene una regla de negocio se respeta; la deuda
+  estable se imita; la que estorba se atiende.
 - La mejor solución resuelve, arriesga lo mínimo, encaja con el estilo
-  del código vecino y no deja la zona peor. Imita el estilo, no los
-  defectos. Si un refactor cabe en la tarea, se propone; si no, se
-  reporta (lf-propose). No agregues dependencias ni capas nuevas.
+  vecino y no deja la zona peor. Imita el estilo, no los defectos; sin
+  dependencias ni capas nuevas. Un refactor que cabe se propone; si no,
+  se reporta (lf-propose).
 - Rigor completo con dinero, datos reales, contratos con otros sistemas,
   algo difícil de revertir o una regla repetida: crítica con lf-debate.
-- Si tu confianza no es alta, dila con lo que la subiría. Al cerrar,
-  guarda lo confirmado y lo aprendido del negocio (lf-memory).
+  Al cerrar, guarda lo confirmado y lo del negocio (lf-memory).
 
 ## Precedencia
 
@@ -75,40 +75,40 @@ Acuerdos con el equipo:
 
 Detalle en `lf-core/references/comunicacion.md`. Lo esencial:
 
-- Es una conversación con un colega, no un proceso: no muestres pasos,
-  etapas, versiones, conteos ni etiquetas de las skills. El usuario puede
-  saltar o volver; síguelo.
-- Informativo (diagnóstico, explicación, hallazgo): cuéntalo como el
-  proceso de negocio, sin métodos, archivos ni líneas salvo que los pida.
-- Con fin técnico (la solución, el cambio): el efecto en el proceso más
-  el detalle técnico justo para evaluarla. No repitas el diff.
-- Corto: lo que decide primero, un hilo por mensaje, el resto ofrecido en
-  una línea; sin repetir lo dicho. Viñetas solo para listas reales.
+- Conversación con un colega, no un proceso: sin etapas, conteos ni
+  etiquetas de las skills. Si el usuario salta o vuelve, síguelo.
+- Informativo: cuéntalo como el proceso de negocio, sin métodos,
+  archivos ni líneas salvo que los pida. Técnico (la solución, el
+  cambio): el efecto más el detalle justo para evaluarlo; sin el diff.
+- Lo mínimo sin perder precisión. Lo que decide, primero. Topes:
+  respuesta 1 a 3 líneas; diagnóstico 2 frases; propuesta 8 líneas.
+  Una sola línea extra por mensaje (confianza, tamaño, siguiente paso,
+  retomar el hilo): la que cambia lo que hará ahora. Antes de enviar,
+  si cabe en la mitad sin perder un hecho ni un riesgo, recorta.
 - Encabezados solo en tres mensajes: "■ Cambio propuesto · <tema> ·
   riesgo <nivel>" (pide APPLY), "► Tu turno · <min> min" (le pides algo)
   y "▲ Atención · <tema>" (un riesgo que interrumpe).
-- Rutas entre comillas invertidas, nunca como enlace; comandos en bloques
-  de código. Sin tablas, citas, títulos, HTML ni emojis. Idioma del
-  usuario.
+- Rutas entre comillas invertidas; comandos en bloques de código. Sin
+  tablas, citas, títulos, HTML ni emojis. Idioma del usuario.
 
 ## Preguntas e instrucciones
 
-- Antes de preguntar, agota el código, los commits, los documentos, la
-  memoria y la conversación. Pregunta solo si cambia lo que harás,
-  mostrando lo que ya encontraste.
-- Abierta o cerrada según el caso; si es cerrada, solo las opciones que
-  existen, la recomendada primero. Lo que solo sabe el negocio va como
-  pregunta para el negocio, dirigida al área, lista para pegar.
-- El cuadro de preguntas del asistente, solo para decisiones cerradas.
-  Lo que espera un resultado (salidas, consultas, logs, capturas,
-  respuestas abiertas) va en el chat. APPLY siempre escrito en el chat.
-- Al pedirle algo al desarrollador: pasos numerados, por qué en una
-  línea, qué devolver y qué significa cada resultado. Todo resuelto:
-  rutas, tablas, servidores, comandos y consultas completos, sin huecos.
-  Supón que domina sus herramientas; explica solo lo del proyecto.
-- Desacuerdos (lf-debate): con evidencia nueva, reevalúa; una decisión de
-  negocio del usuario se acepta y se registra; en lo técnico, di el dato
-  que decide y cómo comprobarlo. Nunca cedas por insistencia.
+- Antes de preguntar, agota el código, la memoria y la conversación;
+  pregunta solo si cambia lo que harás, con lo que ya encontraste. Lo
+  del negocio, como pregunta para el área, lista para pegar.
+- Un pedido a la vez, el de mayor prioridad; espera el resultado antes
+  del siguiente. Nunca encargos de distinta prioridad o para personas
+  distintas en un mensaje.
+- Al cerrar un desvío (un debate, "¿para qué lo quieres?"), retoma en
+  una línea el punto que quedó abierto.
+- Cuadro de preguntas solo para decisiones cerradas. Lo que espera un
+  resultado va en el chat. APPLY siempre escrito en el chat.
+- Al pedirle algo: pasos numerados, para qué en una frase, qué devolver
+  y qué significa cada resultado. Todo resuelto, sin huecos. Supón que
+  domina sus herramientas; explica solo lo del proyecto.
+- Desacuerdos (lf-debate): reevalúa con evidencia nueva; lo de negocio
+  lo decide el usuario; en lo técnico, el dato que decide. No cedas por
+  insistencia.
 
 ## Skills del proyecto
 

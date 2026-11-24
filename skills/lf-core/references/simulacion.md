@@ -177,13 +177,18 @@ con la misma cookie de sesión contra QA.
 
 ## Qué recibe el desarrollador
 
-No la matriz de escenarios. Recibe, en pocas líneas:
+No la matriz de escenarios. Recibe, en dos o tres líneas, lo más
+probable con su confianza y un solo siguiente paso, el de mayor
+prioridad (lf-core, Paso a paso):
 
-- Lo más probable y con qué confianza.
-- La receta para forzarlo: los pasos y las condiciones que convierten
-  "pasa a veces" en "pasa si hago esto".
-- La observación más barata que separa lo que queda abierto.
-- El supuesto de contexto que falta, si lo hay, como pregunta corta.
+- La pregunta de contexto que falta, si sin ella la simulación no se
+  sostiene.
+- Si no, la receta para forzarlo: los pasos y las condiciones que
+  convierten "pasa a veces" en "pasa si hago esto".
+- Si no hay receta, la observación más barata que separa lo que queda
+  abierto.
+
+Lo que no entra se queda en tu mapa para el mensaje siguiente.
 
 El detalle (los escenarios, el recorrido con rutas y líneas) solo si lo
 pide.

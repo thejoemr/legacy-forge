@@ -213,8 +213,13 @@ Revisa la transcripción con estos criterios. Cada falla es un hallazgo:
 7. Registro: ¿usó nombres de métodos, archivos o líneas en mensajes
    informativos? ¿Faltó detalle técnico al proponer la solución? ¿Le
    explicó al experto lo que ya sabe? ¿Le explicó el negocio?
-8. Brevedad y forma: ¿algún mensaje pasó la extensión de referencia de
-   `comunicacion.md` sin que el caso lo justificara? ¿Repitió lo que el
+8. Brevedad y forma: cuenta las líneas de cada mensaje visible (sin
+   código, comandos ni textos para pegar) contra los topes de
+   `comunicacion.md` (respuesta 3, diagnóstico 2 frases, propuesta 8):
+   cada mensaje que se pase sin que el caso lo justifique es un
+   hallazgo. ¿Sumó varias líneas extra (confianza, tamaño, siguiente
+   paso, oferta) en un mismo mensaje? ¿Se podía decir en la mitad sin
+   perder un hecho ni un riesgo? ¿Repitió lo que el
    desarrollador dijo o lo ya acordado? ¿Contó su razonamiento sin que se
    lo pidieran? ¿Mezcló varios hilos en un mensaje? ¿Viñetas con
    etiquetas como plantilla? ¿Encabezados fuera de los tres de cambio,
@@ -250,6 +255,18 @@ Revisa la transcripción con estos criterios. Cada falla es un hallazgo:
     pidieran? ¿Volvió a simular solo lo que dependía de un supuesto que
     cayó? ¿Dio la receta para forzarlo? ¿Volcó la matriz de casos en el
     mensaje? ¿Guardó lo confirmado de los ambientes?
+
+17. Contexto acumulado: ¿preguntó, buscó o delegó algo que el
+    desarrollador ya había dicho o que se deducía de lo dicho y lo
+    leído? ¿Cruzó datos que llegaron en mensajes distintos?
+18. Precedentes: antes de diseñar, ¿buscó cómo resolvió el sistema algo
+    parecido? ¿Reutilizó o siguió la forma de lo que ya existía, y dijo
+    en qué se apoyaba? ¿Copió un defecto del precedente?
+19. Orden y foco: ¿pidió una cosa a la vez, la de mayor prioridad, o
+    repartió en un mensaje encargos de distinta prioridad o para
+    personas distintas? ¿Usó cada resultado para decidir lo siguiente?
+    Tras un desvío (debate, "¿para qué?", pregunta lateral), ¿retomó en
+    el mismo mensaje el punto que quedó abierto, o se le olvidó?
 
 Antes de reportar un hallazgo, comprueba que es un defecto del paquete y
 no un artefacto de tu simulación: vuelve a leer el texto de la skill. Si

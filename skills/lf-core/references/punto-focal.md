@@ -18,7 +18,8 @@ ese proceso y su vecindad.
 
 ## El mapa
 
-Lo construyes tú, leyendo. Siete preguntas, en este orden de peso:
+Lo construyes tú, leyendo, sin olvidar lo que el desarrollador ya dijo
+en la conversación. Ocho preguntas, en este orden de peso:
 
 1. Para qué existe en el negocio. Qué proceso sirve, a quién, y qué
    pasaría en la operación si falla.
@@ -36,11 +37,58 @@ Lo construyes tú, leyendo. Siete preguntas, en este orden de peso:
    otro sistema que recibe el dato. Búscala por los nombres del dominio,
    constantes, fórmulas parecidas y SQL. Cambiar solo una produce
    descuadres que nadie ve hasta el cierre.
-6. Por qué está así. Ver "El porqué".
-7. Qué es raro y qué se hace con ello. Ver "El desorden controlado".
+6. Cómo resolvió el sistema algo parecido. Ver "Precedentes".
+7. Por qué está así. Ver "El porqué".
+8. Qué es raro y qué se hace con ello. Ver "El desorden controlado".
 
 Y al final, lo que no sabes: con qué confianza, y si se averigua leyendo,
 con el desarrollador (lf-delegate) o con el negocio.
+
+## Precedentes
+
+La pregunta 5 busca la misma regla; esta busca el mismo tipo de
+problema, ya resuelto en otro lado. Un desarrollador con experiencia lo
+hace antes de diseñar, porque el sistema ya decidió cómo se hacen las
+cosas aquí.
+
+Qué buscar, según la tarea:
+
+- Una pantalla, un reporte, un job o un endpoint hermano: otro que
+  valida, exporta, calcula, envía o pagina igual que lo que hay que
+  hacer.
+- Utilidades compartidas: módulos comunes, helpers, clases base,
+  funciones de acceso a datos, componentes de formulario, rutinas de
+  bitácora, de fechas o de folios.
+- Integraciones parecidas: otra llamada al mismo servicio, otro archivo
+  de intercambio con el mismo formato, otra cola.
+- Cambios parecidos en el historial: un commit que agregó un caso
+  similar (otro descuento, otro tipo de cliente, otro campo al reporte)
+  enseña qué lugares tuvo que tocar.
+
+Cómo buscar: por la forma del problema y no solo por los nombres del
+dominio. Busca los verbos y las piezas técnicas (exportar, `Excel`,
+`SendMail`, `ExecuteReader`, la tabla de parámetros, el control de la
+grilla), carpetas vecinas con la misma estructura y el `git log` de
+archivos parecidos.
+
+Qué hacer con lo que encuentras, en este orden:
+
+1. Reutilizarlo: si ya hace lo que hace falta, se llama.
+2. Adaptarlo: si resuelve algo casi igual, se sigue su forma (o se copia
+   y se ajusta, si así trabaja el sistema), sin copiar sus defectos.
+3. Tomarlo como la forma de la casa: si nada sirve directo, lo nuevo se
+   escribe como esos precedentes.
+
+Si hay varios patrones para lo mismo, elige el del mismo módulo, el más
+repetido o el más reciente, en ese orden, y dilo. Un precedente prueba
+cómo trabaja el equipo, no que funcione bien: si tiene un defecto
+(`solucion.md`), se sigue su forma y se corrige el defecto en lo nuevo.
+
+Si no hay precedente, también es dato: lo nuevo no tiene forma de la
+casa y conviene decirlo en la propuesta.
+
+En un diagnóstico, un flujo parecido que sí funciona sirve de
+comparación: la diferencia entre los dos suele ser la causa.
 
 ## El porqué
 
@@ -98,28 +146,20 @@ segundos y decidan viendo lo mismo. Es un mensaje informativo
 (`comunicacion.md`): se cuenta como el proceso de negocio, no como el
 código.
 
-- Lo que importa para la tarea, no las siete preguntas. Si una respuesta
+- Lo que importa para la tarea, no las ocho preguntas. Si una respuesta
   no cambia nada, no se dice.
 - Lo raro, con su porqué y qué harás con ello.
 - El riesgo principal, si lo hay, en una frase.
-- Lo que no sabes, como pregunta para el negocio si es de negocio.
+- La duda que bloquea, una sola; las demás esperan su turno.
 
-Ejemplo:
+Hasta unas 6 líneas. Ejemplo:
 
-    Esto cambia lo que se le cobra al mayorista y lo que se timbra.
-
-    El mismo cálculo lo usan la captura, la reimpresión y el cierre de
-    mes. Ya hay tres descuentos especiales para clientes puntuales; el
-    commit que los metió dice que son acuerdos comerciales de 2019, así
-    que no los toco.
-
-    El reporte de ventas no usa este cálculo: tiene el suyo en la base.
-    Si agregamos el descuento solo aquí, el reporte va a dar más que la
-    facturación. Hay que tocar los dos.
-
-    Una duda antes de seguir: ¿el pronto pago se descuenta al facturar o
-    al cobrar? Si es al cobrar, ya es una nota de crédito y es otro
-    trabajo.
+    Esto cambia lo que se cobra y se timbra al mayorista. El mismo
+    cálculo lo usan captura, reimpresión y cierre de mes; los tres
+    descuentos especiales que tiene son acuerdos de 2019 (dice el
+    commit) y no los toco. El reporte de ventas calcula aparte en la
+    base: hay que tocar los dos o va a descuadrar. Tarea media.
+    ¿El pronto pago se descuenta al facturar o al cobrar?
 
 En pedidos directos (una pregunta, un cambio de una línea ya definido),
 el mapa existe en tu cabeza pero no se muestra: solo la frase que

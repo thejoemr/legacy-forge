@@ -1,7 +1,7 @@
 {
   "name": "legacyforge-guard",
   "displayName": "LegacyForge · protección de cambios",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Hook lf-guard: bloquea crear o editar archivos del proyecto sin un APPLY escrito en el chat, la lectura de archivos de secretos y los comandos de git que descartan o reescriben trabajo. Requiere Node.js 18+.",
   "author": {
     "name": "thejoemr",

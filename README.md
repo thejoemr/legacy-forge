@@ -9,7 +9,7 @@ sin que escribas `APPLY`.
 
 Funciona sobre **Claude Code**, **GitHub Copilot** (VS Code y CLI) y
 **Codex**, y en cualquier asistente compatible con
-[Agent Skills](https://agentskills.io). Versión actual: **0.4.1**
+[Agent Skills](https://agentskills.io). Versión actual: **0.4.2**
 ([cambios](CHANGELOG.md)).
 
 | Pieza | Qué es | ¿Obligatoria? |
@@ -161,7 +161,7 @@ Instala siempre las 18 juntas: comparten referencias en
 | `--project RUTA` | `-Project RUTA` | Repositorio para `project` y para la protección de Copilot |
 | `--hooks` | `-Hooks` | Agrega la protección de cambios (Node.js 18+) |
 | `--no-agents` | `-NoAgents` | No instala los ayudantes |
-| `--ref v0.4.1` | `-Ref v0.4.1` | Instala una versión concreta (etiqueta o rama) |
+| `--ref v0.4.2` | `-Ref v0.4.2` | Instala una versión concreta (etiqueta o rama) |
 | `--source RUTA` | `-Source RUTA` | Instala desde un clon local |
 | `--uninstall` | `-Uninstall` | Quita solo lo que instala LegacyForge |
 | `--dry-run` | `-DryRun` | Muestra lo que haría sin cambiar nada |

@@ -19,6 +19,22 @@ orden:
 Si dos opciones empatan, la que toca menos lugares y es más fácil de
 revertir.
 
+## Primero, lo que ya existe
+
+Antes de escribir algo nuevo, busca los precedentes (`punto-focal.md`,
+Precedentes). Orden de preferencia:
+
+1. Reutilizar: si ya existe algo que hace lo que hace falta, se llama.
+2. Adaptar un precedente: si otra parte resolvió algo casi igual, se
+   sigue su estructura. La lógica idéntica se llama, no se copia; lo que
+   se copia y ajusta es la forma (cómo se arma la pantalla, el reporte,
+   el job), si así trabaja el sistema.
+3. Escribir algo nuevo, con la forma de la casa.
+
+La propuesta dice en una frase en qué se apoya: "igual que la
+exportación de pedidos" o "usa la rutina de folios que ya existe". Si
+no encontraste precedente, también se dice.
+
 ## Encajar no es copiar el desorden
 
 - Imita el estilo del código vecino: el mismo paradigma, las mismas
@@ -74,15 +90,11 @@ Reporte de refactor o de deuda (texto para otra área, en su idioma):
 
     Facturación · descuentos repartidos
 
-    Para agregar el descuento por pronto pago se modificó buena parte del
-    cálculo de la factura. Ese cálculo ya tiene cuatro descuentos escritos
-    por separado, y lo usa también el cierre de mes.
-
-    Convendría juntarlos en una sola regla configurable. No se hizo ahora
-    porque toca el cierre y necesita sus propias pruebas.
-
-    Esfuerzo estimado: medio. Si no se hace, cada descuento nuevo vuelve a
-    tocar el cálculo del cierre, con el mismo riesgo de hoy.
+    El cálculo de la factura, que también usa el cierre de mes, ya tiene
+    cuatro descuentos escritos por separado. Convendría juntarlos en una
+    regla configurable; no se hizo ahora porque toca el cierre y necesita
+    sus propias pruebas. Esfuerzo medio. Si no se hace, cada descuento
+    nuevo vuelve a arriesgar el cierre.
 
 ## La ventana opcional
 

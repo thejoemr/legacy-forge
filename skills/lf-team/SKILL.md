@@ -22,7 +22,8 @@ plano o con ojos que no conozcan su razonamiento.
 ## Roles
 
 - lf-explorador: localiza y resume. Flujos, consumidores, dónde más vive
-  una regla, qué cambió en el historial y por qué (commits y
+  una regla, precedentes (cómo resolvió el sistema algo parecido), qué
+  cambió en el historial y por qué (commits y
   comentarios).
 - lf-critico: ataca una propuesta. Evidencia débil, alternativa más
   simple, consumidor u otro lugar de la regla olvidado, falta de encaje
@@ -67,7 +68,8 @@ de `.claude/agents/`; Copilot en VS Code lee esa misma carpeta y también
 
 - Explorar: 3 o más búsquedas independientes, o más de una unidad o
   repositorio. Por ejemplo, un explorador por cada lugar donde podría
-  vivir la regla (código, base de datos, reportes).
+  vivir la regla (código, base de datos, reportes), y otro para los
+  precedentes mientras tú lees el punto focal.
 - Hipótesis en paralelo: en un diagnóstico, una por explorador, cada uno
   buscando qué la confirma y qué la descarta.
 - Escenarios: cuando una señal de `simulacion.md` pide variar

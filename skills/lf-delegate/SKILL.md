@@ -157,10 +157,18 @@ Forma:
   consultas completas con los valores del caso puestos; textos de
   búsqueda exactos. Si un dato no se puede resolver, el valor más probable
   y cómo confirmarlo en el mismo paso.
-- R11. Junta en una tarea las observaciones que sirven al mismo objetivo,
-  aunque se hagan en lugares distintos (por ejemplo, un comando de git y
-  una consulta). Hasta 3 pasos de obtención; si son más, es más de una
-  tarea.
+- R11. Una tarea a la vez, la de mayor prioridad: la que desbloquea,
+  puede cambiar el rumbo o decide si lo demás hace falta. Lo que sigue
+  se queda en tu lista y se pide cuando llegue el resultado, que muchas
+  veces lo cambia o lo vuelve innecesario (lf-core, Paso a paso).
+  Dentro de una tarea, junta las observaciones de la misma prioridad que
+  sirven al mismo objetivo, aunque se hagan en lugares distintos (un
+  comando de git y una consulta), hasta 3 pasos de obtención. Nunca en
+  un mismo mensaje encargos de distinta prioridad, ni para personas
+  distintas (una consulta para el desarrollador, una pregunta para el
+  negocio, una decisión para su jefe). Excepción: un
+  encargo que tarda días en volver y no depende de lo actual puede ir
+  junto, diciendo en la misma frase por qué se adelanta.
 - R12. Cada dato específico del sistema sale de evidencia. Si lo deduces
   del código pero nadie lo confirmó, márcalo "según el código" y di qué
   hacer si no coincide.
@@ -180,7 +188,8 @@ Forma:
 - R19. Una capacidad NO_DISPONIBLE no se reintenta ni se resuelve
   instalando algo: se delega.
 - R20. Una tarea pendiente nunca bloquea una solicitud nueva. Si pide
-  otra cosa, tiene prioridad (T4, CAMBIO_DE_RUMBO).
+  otra cosa, tiene prioridad (T4, CAMBIO_DE_RUMBO), y la pendiente se
+  retoma al cerrar lo nuevo, si sigue haciendo falta.
 
 ## Estados
 
@@ -210,7 +219,8 @@ y ruta del código allá.
 Para cada dato o acción, en este orden:
 
 1. ¿Sale del código o de los archivos? Obtenlo tú.
-2. ¿Está en el registro? Úsalo.
+2. ¿Está en el registro, lo dijo el desarrollador o se deduce de lo que
+   ya se sabe en la conversación? Úsalo.
 3. ¿Lo puedes hacer tú? Solo si la capacidad está DISPONIBLE.
 4. ¿Cumple R2? Si no, sigue sin él.
 5. ¿Es un dato que el desarrollador probablemente ya tiene a mano (el
@@ -234,8 +244,7 @@ con `dir /s Facturacion*.log` en D:".
 
     ► Tu turno · <minutos> min
 
-    <Qué necesitas confirmar y por qué no lo ves desde aquí, en 1 o 2
-    frases.>
+    <Qué necesitas confirmar y qué decide, en una frase.>
 
     1. <paso, con el comando o la consulta completos en un bloque>
     2. <paso>
@@ -265,8 +274,8 @@ Detalle por paso, según la familiaridad con su herramienta:
 
 Clasifica cada respuesta:
 
-- ESPERADO: registra el dato y lo confirmado del sistema. Decide el
-  siguiente paso con el resultado.
+- ESPERADO: registra el dato y lo confirmado del sistema. Revisa el
+  orden de lo pendiente con el resultado y pide solo lo siguiente.
 - INESPERADO: es información valiosa. Analízala antes de seguir; si
   cambia el plan, dilo en una frase.
 - BLOQUEADO (no encuentra la opción, error, sin acceso, sin datos):
@@ -277,15 +286,21 @@ Clasifica cada respuesta:
 - PARCIAL: registra lo obtenido y pide solo lo que falta.
 - NO_PUEDE: regístralo como pendiente y busca otra vía; si no hay, di
   qué queda sin verificar.
-- OTRO (una pregunta o comentario sobre la tarea): respóndelo; la tarea
-  sigue pendiente.
+- OTRO (una pregunta o comentario sobre la tarea, incluido "¿para qué
+  quieres eso?"): respóndelo en una o dos frases (qué decide ese dato) y,
+  en el mismo mensaje, vuelve a pedir la tarea en una línea, sin
+  repetirla entera. Si su objeción la vuelve innecesaria, retírala y
+  dilo. Si se abre un debate, al cerrarlo retoma la tarea (lf-core,
+  Volver al hilo).
 - CAMBIO_DE_RUMBO (pide otra cosa, aunque venga con un resultado):
-  registra el resultado que haya y deja la tarea pendiente sin
-  recordarla. Si te invocó otra skill, devuélvele el control. Retoma la
-  tarea solo si sigue siendo necesaria cuando se resuelva lo nuevo.
+  registra el resultado que haya y atiende lo nuevo sin insistir con la
+  tarea mientras tanto. Si te invocó otra skill, devuélvele el control.
+  Al cerrar lo nuevo, recuerda la tarea en una línea si sigue siendo
+  necesaria, o dila descartada si ya no.
 
-Al terminar una serie, resume en pocas líneas los datos obtenidos, lo
-confirmado del sistema (va a la memoria) y lo pendiente.
+Al terminar una serie, en dos o tres líneas: lo que se obtuvo y lo que
+sigue pendiente. Lo confirmado del sistema va a la memoria sin
+anunciarlo.
 
 ### T5. Atasco
 

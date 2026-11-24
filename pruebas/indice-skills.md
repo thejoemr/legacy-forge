@@ -1,7 +1,7 @@
 # Índice de skills de LegacyForge
 
 Lo único que un asistente ve de cada skill antes de activarla: nombre,
-descripción y cómo se invoca. Generado de los encabezados (0.4.1)
+descripción y cómo se invoca. Generado de los encabezados (0.4.2)
 con `node scripts/indice-skills.mjs`.
 
 ## lf-analyze

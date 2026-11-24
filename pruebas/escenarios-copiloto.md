@@ -168,8 +168,87 @@ respuesta es corta.
   genérico). Proyecto preparado con lf-init.
 - Guion: "q pasa si un cliente no tiene rfc al facturar?". Después: "y si
   trae espacios?" (el código hace `trim` antes de validar).
-- Observar: una respuesta de 2 a 6 líneas contada como el proceso, sin
+- Observar: una respuesta de 1 a 3 líneas contada como el proceso, sin
   barrido de escenarios; la segunda pregunta también se responde
   leyendo, sin simulación aparte; nada de recapitular la primera
   respuesta; si hay un caso que el código no cubre (por ejemplo, un RFC
   con minúsculas), una línea ofreciéndolo, no un análisis.
+
+## E31 · Contexto que se dio al principio y se deduce después
+
+Agregado en 0.4.2 para probar que se exprime lo que ya se sabe.
+
+- Entorno: Copilot en VS Code, sin terminal. Java 6 con Struts 1 y
+  Oracle. El job nocturno de conciliación lee un archivo que deja el
+  banco en una carpeta compartida y marca como pagadas las facturas que
+  encuentra. Proyecto preparado con lf-init.
+- Guion: primer mensaje, con contexto de pasada: "el job de
+  conciliacion corre a las 2am en el server de batch, el banco deja el
+  archivo como a la 1:30 pero los lunes lo manda mas tarde porque el
+  domingo no procesan". Diez mensajes después, en medio de otra cosa:
+  "oye y por que los lunes amanecen facturas sin conciliar?".
+- Observar: que cruce lo dicho al inicio (horario del job, llegada
+  tardía los lunes) con lo que lee (el job no reintenta si no hay
+  archivo) y dé la causa probable sin preguntar el horario ni pedir el
+  log del lunes como primer paso; que marque la conclusión como
+  deducida, con su confianza y la observación que la confirma; que no
+  repita preguntas cuya respuesta ya dio el desarrollador.
+
+## E32 · Exportación que ya existe en otra pantalla
+
+Agregado en 0.4.2 para probar la búsqueda de precedentes.
+
+- Entorno: Claude Code con terminal y git. ASP.NET Web Forms 4.5 y SQL
+  Server. Tres pantallas de consulta (pedidos, clientes, inventario)
+  exportan su grilla a Excel con la misma clase `ExportadorGrid` y un
+  botón con el mismo estilo; una cuarta, más vieja, exporta a CSV
+  armando el texto a mano. La pantalla de facturas no exporta.
+- Guion: "necesito que la consulta de facturas se pueda bajar a excel".
+  Si le proponen algo nuevo, dice: "¿no hay algo ya hecho?".
+- Observar: que antes de diseñar busque cómo exportan las otras
+  pantallas y proponga reutilizar `ExportadorGrid` con el mismo botón,
+  diciendo en una frase en qué se apoya; que, entre los dos patrones,
+  elija el más repetido y lo diga; que no proponga una librería nueva;
+  que la propuesta quepa en unas 8 líneas. Falla si el desarrollador
+  tiene que preguntar "¿no hay algo ya hecho?".
+
+## E33 · Tres pendientes de prioridad distinta
+
+Agregado en 0.4.2 para probar la delegación paso a paso.
+
+- Entorno: Codex, sin acceso a la base. PHP 5.6 y MySQL. Hay pedidos
+  duplicados en el reporte de ventas; el código sugiere que el doble
+  clic en "guardar" crea dos registros, pero también podría ser el
+  reporte que no agrupa. Si fueran registros duplicados de verdad,
+  habría que decidir con administración si se cancelan y preguntar a
+  ventas si los clientes recibieron dos envíos.
+- Guion: "salen pedidos duplicados en el reporte de ventas de ayer". A
+  cada tarea responde con el resultado. Resultado de la consulta: sí hay
+  dos registros con segundos de diferencia.
+- Observar: que el primer mensaje pida solo la consulta que distingue
+  entre registro duplicado y reporte mal agrupado, sin adelantar la
+  pregunta a ventas ni la decisión de administración; que con el
+  resultado decida qué sigue y pida lo siguiente de a uno; que la
+  pregunta a ventas y la decisión de administración salgan después, en
+  orden, listas para pegar. Falla si un mismo mensaje reparte encargos
+  para el desarrollador, ventas y administración.
+
+## E34 · Debate a mitad de una delegación
+
+Agregado en 0.4.2 para probar que se vuelve al hilo.
+
+- Entorno: Claude Code sin terminal. Delphi 7 con Firebird. Un cálculo
+  de comisiones da distinto que el de contabilidad en algunos
+  vendedores. El copiloto necesita el resultado de una consulta de solo
+  lectura sobre las ventas de un vendedor en octubre.
+- Guion: cuando el copiloto pide la consulta, responde: "¿para qué
+  quieres eso? yo creo que es el redondeo, contabilidad redondea por
+  partida". Si le responden, discute una vuelta más ("pero el redondeo
+  ya lo vimos el año pasado") y luego acepta: "ok va, tienes razón".
+  No pega la consulta hasta que se la vuelvan a pedir.
+- Observar: que conteste el para qué en una o dos frases, sin un debate
+  largo; que considere el redondeo de verdad (si el código redondea por
+  total, la hipótesis es buena y puede ajustar la consulta); que al
+  cerrarse el desvío, en el mismo mensaje, retome la consulta en una
+  línea, sin repetirla entera; que no se olvide de ella. Falla si
+  después del "ok va" el copiloto no vuelve a pedir el dato.

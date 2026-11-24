@@ -80,6 +80,10 @@ se junta los decides tú según el caso.
 
 Antes de pedirle algo al desarrollador:
 
+0. Recorre lo que ya dijo en la conversación (ambiente, fechas, quién
+   lo reportó, qué ya probó, cómo está montado) y lo que ya devolvieron
+   sus tareas. Crúzalo: muchas veces dos datos dichos por separado ya
+   descartan hipótesis (lf-core, Exprimir lo que ya sabes).
 1. Arma el mapa del punto focal en lo que importe
    (`../lf-core/references/punto-focal.md`): por dónde entra el flujo,
    qué decide su camino, dónde más vive la regla y qué estado comparte
@@ -95,6 +99,10 @@ Antes de pedirle algo al desarrollador:
    (commit, comentario, lo que se deduce).
 5. Busca en la memoria (lf-memory) si el mismo síntoma o la misma zona ya
    aparecieron y cuál fue la causa, y qué se sabe de los entornos.
+6. Busca un flujo parecido que sí funciona (otra pantalla que guarda lo
+   mismo, otro reporte con el mismo filtro, otro job contra el mismo
+   servicio) y compáralo con el que falla: la diferencia suele ser la
+   causa o la mejor hipótesis.
 
 Muchas veces aquí ya está la causa. Si el error apunta a una línea y el
 código lo confirma, ve directo al resultado: no hace falta lista de
@@ -180,7 +188,7 @@ receta para forzarlo: suele ser lo que falta en un error intermitente.
 ## Resultado
 
 Causa confirmada: el mensaje dice la causa en el idioma del negocio, en
-máximo 3 frases, con su evidencia en palabras ("el cambio del lunes en la
+2 frases, con su evidencia en palabras ("el cambio del lunes en la
 validación de correos", "214 omisiones en la bitácora"). El detalle
 técnico (ruta, línea, commit) solo si lo pide o si el siguiente paso es
 un cambio.
@@ -189,7 +197,13 @@ Causa probable: empieza con "▲ Atención · causa probable", y di qué sigue
 sin confirmar, la confianza y qué la confirmaría. Si la simulación dejó
 una receta para forzarlo, va aquí como el siguiente paso.
 
-En los dos casos incluye, si aplica:
+Después de la causa va un solo siguiente paso: el de mayor prioridad
+(lf-core, Paso a paso). Lo demás que aplique de esta lista queda en tu
+mapa y se pide o se dice en orden, cuando se resuelva lo anterior. No
+juntes en el mensaje de la causa la consulta para medir el alcance, la
+pregunta al negocio y la decisión de otra persona.
+
+Lo que puede seguir, si aplica:
 
 - Alcance: cuántos registros, clientes o casos, desde cuándo, y qué se
   calcula a partir de lo dañado (saldos, reportes). Si no se midió, la
