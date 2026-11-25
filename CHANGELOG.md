@@ -1,5 +1,41 @@
 # Registro de cambios de LegacyForge
 
+## 1.0.1 · 2026-11-25 · Investigación de punta a punta
+
+Base: feedback de uso real. Al investigar, el harness no cubría el flujo
+completo: se quedaba en la capa con más datos (la que más resultados
+daba en la búsqueda) y dejaba las demás sin revisar ni declarar.
+
+Causa: nada exigía cubrir todas las capas; `lf-comprension` trataba la
+base como frontera; "lectura proporcional" se aplicaba también a la
+cobertura; y la orquestación no revisaba qué capas quedaron cubiertas.
+
+Cambiado:
+
+- `lf-comprension`: sección "Cadena" (entrada, ida por cada capa,
+  vuelta y quién lee después lo escrito), cada eslabón marcado como
+  leído, ubicado o no encontrado; a lo ancho primero, después a lo
+  hondo; la base con lógica (procedimientos, triggers) no es frontera;
+  sección "Sesgo de la capa densa"; lectura proporcional en
+  profundidad, no en cobertura.
+- `lf-investigador` (en `scripts/agentes.mjs`, regenerado para Claude
+  Code y Copilot): territorio de punta a punta; sección "Cobertura antes
+  que profundidad"; `## Cadena` obligatoria en un territorio.
+- `lf-orquestacion`: paso 2 "Cadena primero" (primera pasada a lo ancho;
+  la capa grande, en encargo aparte) y paso 6 "Cobertura" (cada eslabón
+  cubierto o justificado; evidencia de una sola capa es señal de
+  alerta). `mapa.md` lleva la cadena de cada flujo.
+- `lf-plantilla-encargo`: campos "Alcance" y "Cadena conocida".
+- `lf-plantilla-informe`: sección `## Cadena` con su tabla.
+- `references/flujos.md`: entender, diagnosticar y proponer recorren la
+  cadena completa; las hipótesis se reparten por ella.
+
+Sin cambios de comportamiento en hooks (`lf-informe` sigue revisando
+solo los cinco encabezados) ni en el bloque de instrucciones, que solo
+sube de versión: no hace falta volver a correr `/lf-iniciar`.
+
+Sin probar en un asistente real.
+
 ## 1.0.0 · 2026-11-24 · Asistente, agentes y skills, en limpio
 
 Reescritura desde cero. LegacyForge pasa de un conjunto de skills por

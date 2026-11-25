@@ -10,6 +10,13 @@ Unidad: <una sola: el territorio, la hipótesis, el caso, la opción,
 
 Pregunta: <qué debe responder, en una o dos frases>
 
+Alcance: <en un flujo o territorio: "de punta a punta, a lo ancho
+          primero" (por omisión), o el eslabón de la cadena que toca
+          leer a fondo; lo que el humano acotó, con sus palabras>
+
+Cadena conocida: <eslabones ya ubicados, con su ruta, y los que faltan;
+                  "ninguna" en la primera pasada>
+
 Lo que el humano dijo que importa:
 - <con sus palabras: síntoma, caso concreto (folio, usuario, fecha),
   restricciones, plazo, lo que no quiere que se toque>
@@ -25,7 +32,8 @@ Dónde leer:
 - Salidas a leer: `<ruta en salidas/>`, si aplica
 - Memoria útil: `<archivo y sección>`, si aplica
 
-Entrega: el informe de `lf-plantilla-informe`.
+Entrega: el informe de `lf-plantilla-informe` (con `## Cadena` si la
+unidad es un flujo o territorio).
 Límites: solo lectura; no escribas nada. Si para responder hace falta
 una observación que no puedes hacer, redáctala lista para el humano en
 "Para decidir".
@@ -35,5 +43,8 @@ Reglas:
 
 - Una unidad por encargo. Dos hipótesis son dos encargos.
 - Sin conclusiones de otras instancias sobre la misma pregunta y sin un
-  lado asignado (disenso auténtico). Sí van los hechos ya confirmados.
+  lado asignado (disenso auténtico). Sí van los hechos ya confirmados,
+  y la cadena ya ubicada.
+- Un flujo no se encarga como "la parte de SQL" o "la pantalla" sin la
+  cadena antes (lf-orquestacion, paso 2).
 - Si la unidad tiene una señal de rigor, dilo en la pregunta.

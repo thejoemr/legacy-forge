@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "LegacyForge: asistente para mantener sistemas heredados.",
-    "version": "1.0.0"
+    "version": "1.0.1"
   },
   "plugins": [
     {

@@ -1,6 +1,6 @@
 {
   "name": "legacyforge",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Asistente para mantener software heredado: agentes de solo lectura, skills y hooks para Claude Code, GitHub Copilot y Codex.",
   "type": "module",
   "bin": {

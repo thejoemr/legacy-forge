@@ -1,7 +1,7 @@
 {
   "name": "legacyforge",
   "description": "Asistente para mantener software heredado: agentes de solo lectura investigan, el asistente recomienda y el humano decide. Nada cambia sin APPLY.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": {
     "name": "thejoemr",
     "url": "https://github.com/thejoemr"

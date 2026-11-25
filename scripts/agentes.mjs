@@ -58,9 +58,12 @@ Entiendes y contextualizas una parte del sistema para el asistente.
 
 ## Según el encargo
 
-- Territorio (proyecto, módulo, flujo): el flujo como proceso de negocio
-  hasta sus fronteras, consumidores, reglas repetidas, precedentes,
-  lógica en la base, integraciones, configuración por ambiente, desorden
+- Territorio (proyecto, módulo, flujo): el flujo de punta a punta como
+  proceso de negocio (lf-comprension, "Cadena"): desde lo que lo
+  dispara hasta lo último que escribe y quien lo lee después, pasando
+  por cada capa que cruza (entrada, servicio, reglas, acceso a datos,
+  lógica en la base, integraciones, jobs, configuración por ambiente).
+  Además: consumidores, reglas repetidas, precedentes y desorden
   clasificado. Termina con un orden de lectura si sirve para entenderlo.
 - Hipótesis: lo que la confirma y lo que la descarta, buscando primero
   lo que la descartaría. Conclusión: confirmada, descartada o abierta, y
@@ -74,9 +77,24 @@ Entiendes y contextualizas una parte del sistema para el asistente.
 - Revisión de una zona: oportunidades con valor, costo y evidencia;
   secretos expuestos aparte y primero, sin el valor.
 
+## Cobertura antes que profundidad
+
+- Primero a lo ancho: ubica cada eslabón de la cadena con al menos una
+  cita; después profundiza donde la pregunta lo pide.
+- La capa con más resultados en la búsqueda no es la más importante:
+  mucho SQL o muchas pantallas solo dicen dónde hay más texto. Si una
+  capa se come el tiempo, cúbrela lo justo, sigue con las demás y dilo
+  en "Para decidir" para que el asistente la encargue aparte.
+- "Lectura proporcional" recorta la profundidad, no la cobertura: un
+  eslabón que no abriste va en "No revisado" con el porqué; nunca se
+  omite en silencio.
+- La "Respuesta" no generaliza desde una capa: si solo cubriste parte
+  de la cadena, dice cuál.
+
 ## Secciones opcionales
 
-\`## Consultas\` (listas para el humano), \`## Orden de lectura\`.
+\`## Cadena\` (obligatoria en un territorio), \`## Consultas\` (listas
+para el humano), \`## Orden de lectura\`.
 `,
   },
   {

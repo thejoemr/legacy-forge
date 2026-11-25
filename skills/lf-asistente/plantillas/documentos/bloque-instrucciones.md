@@ -1,4 +1,4 @@
-<!-- legacyforge:inicio v1.0.0 -->
+<!-- legacyforge:inicio v1.0.1 -->
 ## LegacyForge
 
 Este proyecto se mantiene con el asistente LegacyForge. Antes de

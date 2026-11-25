@@ -1,4 +1,4 @@
-# LegacyForge 1.0.0
+# LegacyForge 1.0.1
 
 Un asistente para mantener software heredado. Funciona en Claude Code,
 GitHub Copilot y Codex.

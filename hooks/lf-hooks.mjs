@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// LegacyForge 1.0.0 · hooks
+// LegacyForge 1.0.1 · hooks
 //
 // Reglas que se cumplen fuera del modelo, aunque el modelo se equivoque.
 // Un solo script para Claude Code y GitHub Copilot (formato compatible).

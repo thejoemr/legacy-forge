@@ -24,8 +24,20 @@ que traiga los cinco encabezados; si falta uno, el agente lo completa.
 ```
 
 Secciones opcionales, después de las cinco, según el agente:
-`## Consultas`, `## Casos`, `## Planteamiento`, `## Borrador`,
-`## Receta`, `## Diferencias`.
+`## Cadena`, `## Consultas`, `## Casos`, `## Planteamiento`,
+`## Borrador`, `## Receta`, `## Diferencias`.
+
+`## Cadena` es obligatoria cuando la unidad es un flujo o territorio:
+
+```
+## Cadena
+| # | Eslabón | Dónde | Marca |
+|---|---|---|---|
+| 1 | Entrada: <pantalla, endpoint, job> | `<ruta>:<línea>` | leído |
+| 2 | <servicio, regla, acceso a datos> | `<ruta>:<línea>` | leído |
+| 3 | Base: <procedimiento, trigger, vista> | `<ruta>` | ubicado: <por qué no se leyó> |
+| 4 | Después: <quién lee lo escrito> | busqué en <dónde> | no encontrado |
+```
 
 Reglas:
 
@@ -33,3 +45,5 @@ Reglas:
 - Ningún secreto ni dato personal: nombra la clave o el campo, nunca el
   valor.
 - "No encontré" no prueba ausencia: di dónde buscaste.
+- Todo eslabón ubicado o no encontrado de la cadena aparece también en
+  "No revisado".
