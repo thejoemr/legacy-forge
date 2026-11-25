@@ -53,8 +53,11 @@ $Tmp = $null
 try {
   $node = Get-Command node -ErrorAction SilentlyContinue
   if (-not $node) { throw 'error: LegacyForge necesita Node.js 18 o superior en el PATH (https://nodejs.org)' }
-  $major = [int](& node -p 'process.versions.node.split(".")[0]')
-  if ($major -lt 18) { throw "error: LegacyForge necesita Node.js 18 o superior (tienes $(& node --version))" }
+  # node --version devuelve "v22.11.0". Se lee asi, sin pasarle codigo a node:
+  # Windows PowerShell 5.1 quita las comillas internas de los argumentos.
+  $nodeVersion = (& node --version).Trim()
+  $major = [int]($nodeVersion.TrimStart('v').Split('.')[0])
+  if ($major -lt 18) { throw "error: LegacyForge necesita Node.js 18 o superior (tienes $nodeVersion)" }
 
   if (-not $Source -and $PSCommandPath) {
     $here = Split-Path -Parent $PSCommandPath
